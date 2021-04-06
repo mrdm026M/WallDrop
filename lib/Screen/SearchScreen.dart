@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:walpy/API/Api.dart';
 import 'package:walpy/Model/ApiModel.dart';
 import 'package:http/http.dart' as http;
@@ -20,23 +21,8 @@ class _SearchScreenState extends State<SearchScreen> {
   TextEditingController searchController = new TextEditingController();
 
   getSearchWallpaper(String query) async {
-    // var headers = "Authorization: $apiKey";
-    // var url = "https://api.pexels.com/v1/search?query=$query&per_page=16";
-    // var response = await http.get(
-    //   Uri.https(url, headers),
-    // );
-
-    // Map<String, dynamic> jsonData = jsonDecode(response.body);
-    // jsonData["photos"].forEach((element) {
-    //   ApiModel apiModel = new ApiModel();
-    //   apiModel = ApiModel.fromMap(element);
-    //   wallpapers.add(apiModel);
-    // });
-
-    // setState(() {});
-
     var response = await http.get(
-      "https://api.pexels.com/v1/search?query=$query&per_page=16",
+      "https://api.pexels.com/v1/search?query=$query&per_page=60",
       headers: {"Authorization": apiKey},
     );
 
@@ -62,50 +48,88 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          toolbarHeight: 60.0,
-          elevation: 1.0,
-          title: Text(
-            "Search",
-            style: TextStyle(color: Colors.black),
-          ),
-          backgroundColor: Colors.white,
-        ),
+        backgroundColor: HexColor("#101321"),
         body: SingleChildScrollView(
-          child: Container(
-            child: Column(
-              children: <Widget>[
-                Container(
-                  decoration: BoxDecoration(
-                      color: Color(0xfff5f8fd),
-                      borderRadius: BorderRadius.circular(5.0)),
-                  padding: EdgeInsets.symmetric(horizontal: 15.0),
-                  margin:
-                      EdgeInsets.symmetric(horizontal: 25.0, vertical: 10.0),
-                  child: Row(
-                    children: <Widget>[
-                      Expanded(
-                        child: TextField(
-                          controller: searchController,
-                          decoration: InputDecoration(
-                              hintText: "search wallpapers",
-                              border: InputBorder.none),
+          child: SafeArea(
+            child: Container(
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    width: double.infinity,
+                    height: MediaQuery.of(context).size.height * 0.08,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Center(
+                          child: Container(
+                            width: 60.0,
+                            height: 50.0,
+                            child: IconButton(
+                              icon: Icon(
+                                Icons.arrow_back,
+                                size: 30.0,
+                                color: Colors.white,
+                              ),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => SearchScreen(),
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
                         ),
-                      ),
-                      GestureDetector(
-                          onTap: () {
-                            getSearchWallpaper(searchController.text);
-                          },
-                          child: Container(child: Icon(Icons.search))),
-                    ],
+                        Container(
+                          width: 150.0,
+                          height: 50.0,
+                          child: Center(
+                            child: Text(
+                              "Search",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 28.0,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
-                  child:
-                      wallpapersList(wallpapers: wallpapers, context: context),
-                ),
-              ],
+                  Container(
+                    decoration: BoxDecoration(
+                        color: Color(0xfff5f8fd),
+                        borderRadius: BorderRadius.circular(5.0)),
+                    padding: EdgeInsets.symmetric(horizontal: 15.0),
+                    margin:
+                        EdgeInsets.symmetric(horizontal: 25.0, vertical: 10.0),
+                    child: Row(
+                      children: <Widget>[
+                        Expanded(
+                          child: TextField(
+                            controller: searchController,
+                            decoration: InputDecoration(
+                                hintText: "search wallpapers",
+                                border: InputBorder.none),
+                          ),
+                        ),
+                        GestureDetector(
+                            onTap: () {
+                              getSearchWallpaper(searchController.text);
+                            },
+                            child: Container(child: Icon(Icons.search))),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
+                    child: wallpapersList(
+                        wallpapers: wallpapers, context: context),
+                  ),
+                ],
+              ),
             ),
           ),
         ));

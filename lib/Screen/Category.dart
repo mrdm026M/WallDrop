@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:walpy/API/Api.dart';
 import 'package:walpy/Model/ApiModel.dart';
 import 'package:http/http.dart' as http;
@@ -19,7 +20,7 @@ class _CategoryState extends State<Category> {
 
   getSearchWallpaper(String query) async {
     var response = await http.get(
-      "https://api.pexels.com/v1/search?query=$query&per_page=20",
+      "https://api.pexels.com/v1/search?query=$query&per_page=60",
       headers: {"Authorization": apiKey},
     );
     print(response);
@@ -42,8 +43,9 @@ class _CategoryState extends State<Category> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: HexColor("#101321"),
       body: SingleChildScrollView(
-        child: Container(
+        child: Expanded(
           child: Column(
             children: <Widget>[
               Padding(

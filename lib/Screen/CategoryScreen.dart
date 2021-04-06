@@ -28,7 +28,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
       body: SafeArea(
         child: Container(
           child: Column(
-            children: [
+            children: <Widget>[
               Container(
                 width: double.infinity,
                 height: MediaQuery.of(context).size.height * 0.08,
