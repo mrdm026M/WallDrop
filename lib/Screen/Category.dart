@@ -18,12 +18,11 @@ class _CategoryState extends State<Category> {
   List<ApiModel> wallpapers = List<ApiModel>.empty(growable: true);
 
   getSearchWallpaper(String query) async {
-    var headers = "Authorization: $apiKey";
-    var url = "https://api.pexels.com/v1/search?query=$query&per_page=16";
     var response = await http.get(
-      Uri.https(url, headers),
+      "https://api.pexels.com/v1/search?query=$query&per_page=20",
+      headers: {"Authorization": apiKey},
     );
-
+    print(response);
     Map<String, dynamic> jsonData = jsonDecode(response.body);
     jsonData["photos"].forEach((element) {
       ApiModel apiModel = new ApiModel();

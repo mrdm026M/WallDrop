@@ -24,11 +24,9 @@ class _CategoryScreenState extends State<CategoryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: HexColor("#101321"),
       body: SafeArea(
         child: Container(
-          color: HexColor("#101321"),
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
           child: Column(
             children: [
               Container(
@@ -42,7 +40,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                       height: 50.0,
                       child: Center(
                         child: Text(
-                          "Category",
+                          "Collections",
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 28.0,
@@ -75,7 +73,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                   ],
                 ),
               ),
-              Container(
+              Expanded(
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: ListView.builder(
