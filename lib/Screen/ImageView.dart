@@ -6,7 +6,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
-import 'package:permission_handler/permission_handler.dart';
+// import 'package:permission_handler/permission_handler.dart';
+import 'package:walpy/Permissions/Permissions_Service.dart';
 
 class ImageView extends StatefulWidget {
   final String imgUrl;
@@ -126,7 +127,9 @@ class _ImageViewState extends State<ImageView> {
 
   _save() async {
     if (Platform.isAndroid) {
-      await _askPermission();
+      PermissionsService().requestStoragePermission(onPermissionDenied: () {
+        print("Permission has been denied");
+      });
     }
     var response = await Dio()
         .get(widget.imgUrl, options: Options(responseType: ResponseType.bytes));
@@ -136,56 +139,9 @@ class _ImageViewState extends State<ImageView> {
     // Navigator.pop(context);
   }
 
-  _askPermission() async {
-    // PermissionStatus status = await PermissionHandler().checkPermissionStatus(PermissionGroup.storage);
-    var status = await Permission.storage.status;
-    if (status.isUndetermined) {
-      // You can request multiple permissions at once.
-      Map<Permission, PermissionStatus> statuses = await [
-        Permission.storage,
-        Permission.camera,
-      ].request();
-      print(statuses[
-          Permission.storage]); // it should print PermissionStatus.granted
-    }
-  }
+  // _askPermission() {
+  //   PermissionsService().requestStoragePermission(onPermissionDenied: () {
+  //     print("Permission has been denied");
+  //   });
+  // }
 }
-
-// _save() async {
-//   if (Platform.isAndroid) {
-//     await _askPermission();
-//   }
-
-//   // await _askPermission();
-//   var response = await Dio()
-//       .get(widget.imgUrl, options: Options(responseType: ResponseType.bytes));
-//   final result =
-//       await ImageGallerySaver.saveImage(Uint8List.fromList(response.data));
-//   print(result);
-//   Navigator.pop(context);
-// }
-
-// _askPermission() async {
-//   if (Platform.isAndroid) {
-//   Map<PermissionGroup, PermissionStatus> permissions = await PermissionHandler().requestPermission([PermissionGroup.photos]);
-// } else {
-//   PermissionStatus permissions = await PermissionHandler().checkPermissionStatus(PermissionGroup.storage);
-// }
-//     Map<Permission, PermissionStatus> statuses = await [
-//       Permission.storage,
-//       Permission.camera,
-//     ].request();
-//     print(statuses[Permission.storage]);
-//   }
-// }
-
-// _askPermission() async {
-//   var status = await Permission.storage.request().isGranted;
-//   if (await Permission.storage.requestIfDenied().isGranted) {
-//     Map<Permission, PermissionStatus> statuses = await [
-//       Permission.storage,
-//       Permission.camera,
-//     ].request();
-//     print(statuses[Permission.storage]);
-//   }
-// }
