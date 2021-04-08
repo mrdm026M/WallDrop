@@ -45,20 +45,18 @@ class _MyAppState extends State<MyApp> {
             backgroundColor: HexColor("#101118"),
             selectedItemColor: Colors.white,
             unselectedItemColor: Colors.white.withOpacity(.60),
-            selectedFontSize: 14,
-            unselectedFontSize: 14,
+            selectedFontSize: 15,
+            unselectedFontSize: 13,
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
                 icon: Icon(
                   Icons.wallpaper,
-                  size: 30.0,
                 ),
                 label: "Home",
               ),
               BottomNavigationBarItem(
                 icon: Icon(
                   Icons.collections,
-                  size: 30.0,
                 ),
                 label: "Collections",
               ),

@@ -46,41 +46,39 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColor("#101321"),
+      backgroundColor: HexColor("#101118"),
       body: SingleChildScrollView(
         child: SafeArea(
           child: Container(
             child: Column(
               children: <Widget>[
                 Container(
-                  color: HexColor("#101321"),
+                  color: HexColor("#101118"),
                   width: double.infinity,
-                  padding: EdgeInsets.symmetric(vertical: 10.0),
+                  padding:
+                      EdgeInsets.symmetric(vertical: 5.0, horizontal: 15.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
-                        width: 120.0,
-                        height: 50.0,
                         child: Center(
                           child: Text(
                             "WallDrop",
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 28.0,
-                              fontWeight: FontWeight.w400,
+                              fontSize: 22.5,
+                              fontWeight: FontWeight.w600,
+                              letterSpacing: 1.5,
                             ),
                           ),
                         ),
                       ),
-                      Center(
-                        child: Container(
-                          width: 60.0,
-                          height: 50.0,
+                      Container(
+                        child: Center(
                           child: IconButton(
                             icon: Icon(
                               Icons.search,
-                              size: 30.0,
+                              size: 27.5,
                               color: Colors.white,
                             ),
                             onPressed: () {
@@ -99,7 +97,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 Container(
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
+                    padding: const EdgeInsets.only(
+                      top: 10.0,
+                      bottom: 10.0,
+                    ),
                     child: wallpapersList(
                       wallpapers: _wallpapers,
                       context: context,

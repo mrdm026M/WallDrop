@@ -138,10 +138,4 @@ class _ImageViewState extends State<ImageView> {
     print(result);
     // Navigator.pop(context);
   }
-
-  // _askPermission() {
-  //   PermissionsService().requestStoragePermission(onPermissionDenied: () {
-  //     print("Permission has been denied");
-  //   });
-  // }
 }

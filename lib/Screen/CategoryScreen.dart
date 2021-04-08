@@ -24,39 +24,36 @@ class _CategoryScreenState extends State<CategoryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColor("#101321"),
+      backgroundColor: HexColor("#101118"),
       body: SafeArea(
         child: Container(
           child: Column(
             children: <Widget>[
               Container(
                 width: double.infinity,
-                height: MediaQuery.of(context).size.height * 0.08,
+                padding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 15.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      width: 150.0,
-                      height: 50.0,
                       child: Center(
                         child: Text(
                           "Collections",
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 28.0,
-                            fontWeight: FontWeight.w400,
+                            fontSize: 22.5,
+                            fontWeight: FontWeight.w600,
+                            letterSpacing: 1.5,
                           ),
                         ),
                       ),
                     ),
-                    Center(
-                      child: Container(
-                        width: 60.0,
-                        height: 50.0,
+                    Container(
+                      child: Center(
                         child: IconButton(
                           icon: Icon(
                             Icons.search,
-                            size: 30.0,
+                            size: 27.5,
                             color: Colors.white,
                           ),
                           onPressed: () {
@@ -75,7 +72,10 @@ class _CategoryScreenState extends State<CategoryScreen> {
               ),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.all(10.0),
+                  padding: EdgeInsets.symmetric(
+                    vertical: 10.0,
+                    horizontal: 15.0,
+                  ),
                   child: ListView.builder(
                     itemCount: categories.length,
                     shrinkWrap: true,
@@ -120,11 +120,11 @@ class CategoryTile extends StatelessWidget {
         child: Stack(
           children: <Widget>[
             ClipRRect(
-              borderRadius: BorderRadius.circular(12.5),
+              borderRadius: BorderRadius.circular(10.0),
               child: Image.asset(
                 imgUrl,
                 width: double.infinity,
-                height: 150,
+                height: 150.0,
                 fit: BoxFit.cover,
               ),
             ),
@@ -138,11 +138,11 @@ class CategoryTile extends StatelessWidget {
                 child: Text(
                   title,
                   style: TextStyle(
-                      fontFamily: "PastelColors",
-                      letterSpacing: 2.5,
-                      fontSize: 30.0,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white),
+                    color: Colors.white,
+                    fontSize: 22.5,
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: 1.5,
+                  ),
                 ),
               ),
             )
