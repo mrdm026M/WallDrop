@@ -5,7 +5,9 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:walpy/API/Api.dart';
 import 'package:walpy/Model/ApiModel.dart';
 import 'package:http/http.dart' as http;
+import 'package:walpy/Screen/HomeScreen.dart';
 import 'package:walpy/Widget/WallpaperWidget.dart';
+import 'package:walpy/main.dart';
 
 class SearchScreen extends StatefulWidget {
   final String searchQuery;
@@ -74,7 +76,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => SearchScreen(),
+                                    builder: (context) => MyApp(),
                                   ),
                                 );
                               },

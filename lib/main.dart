@@ -32,22 +32,40 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: HexColor("#101321"),
+        backgroundColor: HexColor("#101118"),
         body: Center(
           child: Container(
             child: _screenOption.elementAt(_screenIndex),
           ),
         ),
-        bottomNavigationBar: BottomNavigationBar(
-          elevation: 25.0,
-          backgroundColor: HexColor("#101321"),
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(icon: Icon(Icons.wallpaper), label: "Home"),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.collections), label: "Collections"),
-          ],
-          currentIndex: _screenIndex,
-          onTap: _onItemTap,
+        bottomNavigationBar: Container(
+          height: 70.0,
+          child: BottomNavigationBar(
+            elevation: 10.0,
+            backgroundColor: HexColor("#101118"),
+            selectedItemColor: Colors.white,
+            unselectedItemColor: Colors.white.withOpacity(.60),
+            selectedFontSize: 14,
+            unselectedFontSize: 14,
+            items: const <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.wallpaper,
+                  size: 30.0,
+                ),
+                label: "Home",
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.collections,
+                  size: 30.0,
+                ),
+                label: "Collections",
+              ),
+            ],
+            currentIndex: _screenIndex,
+            onTap: _onItemTap,
+          ),
         ),
       ),
     );
