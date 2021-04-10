@@ -43,16 +43,48 @@ class _CategoryState extends State<Category> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColor("#101321"),
+      backgroundColor: HexColor("#101118"),
       body: SingleChildScrollView(
-        child: Expanded(
-          child: Column(
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
-                child: wallpapersList(wallpapers: wallpapers, context: context),
-              ),
-            ],
+        child: SafeArea(
+          child: Container(
+            child: Column(
+              children: <Widget>[
+                Container(
+                  color: HexColor("#101118"),
+                  width: double.infinity,
+                  padding:
+                      EdgeInsets.symmetric(vertical: 20.0, horizontal: 15.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        child: Center(
+                          child: Text(
+                            widget.categoryName.toUpperCase(),
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 22.5,
+                              fontWeight: FontWeight.w600,
+                              letterSpacing: 1.5,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    top: 10.0,
+                    bottom: 10.0,
+                  ),
+                  child: wallpapersList(
+                    wallpapers: wallpapers,
+                    context: context,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
