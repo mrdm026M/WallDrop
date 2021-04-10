@@ -41,7 +41,7 @@ class _MyAppState extends State<MyApp> {
         bottomNavigationBar: Container(
           height: 70.0,
           child: BottomNavigationBar(
-            elevation: 10.0,
+            // elevation: 80.0,
             backgroundColor: HexColor("#101118"),
             selectedItemColor: Colors.white,
             unselectedItemColor: Colors.white.withOpacity(.60),
