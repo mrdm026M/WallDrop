@@ -31,7 +31,10 @@ class _CategoryScreenState extends State<CategoryScreen> {
             children: <Widget>[
               Container(
                 width: double.infinity,
-                padding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 15.0),
+                padding: EdgeInsets.symmetric(
+                  vertical: 5.0,
+                  horizontal: 15.0,
+                ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -43,7 +46,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                             color: Colors.white,
                             fontSize: 22.5,
                             fontWeight: FontWeight.w600,
-                            letterSpacing: 1.5,
+                            letterSpacing: 1.25,
                           ),
                         ),
                       ),
@@ -141,7 +144,7 @@ class CategoryTile extends StatelessWidget {
                     color: Colors.white,
                     fontSize: 22.5,
                     fontWeight: FontWeight.w600,
-                    letterSpacing: 1.5,
+                    letterSpacing: 1.25,
                   ),
                 ),
               ),

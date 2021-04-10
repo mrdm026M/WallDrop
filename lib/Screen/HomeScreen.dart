@@ -55,8 +55,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 Container(
                   color: HexColor("#101118"),
                   width: double.infinity,
-                  padding:
-                      EdgeInsets.symmetric(vertical: 5.0, horizontal: 15.0),
+                  padding: EdgeInsets.symmetric(
+                    vertical: 5.0,
+                    horizontal: 15.0,
+                  ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -68,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               color: Colors.white,
                               fontSize: 22.5,
                               fontWeight: FontWeight.w600,
-                              letterSpacing: 1.5,
+                              letterSpacing: 1.25,
                             ),
                           ),
                         ),

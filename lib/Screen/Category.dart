@@ -65,7 +65,7 @@ class _CategoryState extends State<Category> {
                               color: Colors.white,
                               fontSize: 22.5,
                               fontWeight: FontWeight.w600,
-                              letterSpacing: 1.5,
+                              letterSpacing: 1.25,
                             ),
                           ),
                         ),

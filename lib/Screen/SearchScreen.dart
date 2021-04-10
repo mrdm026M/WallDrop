@@ -49,26 +49,30 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: HexColor("#101321"),
+        backgroundColor: HexColor("#101118"),
         body: SingleChildScrollView(
           child: SafeArea(
             child: Container(
               child: Column(
                 children: <Widget>[
                   Container(
+                    color: HexColor("#101118"),
                     width: double.infinity,
-                    height: MediaQuery.of(context).size.height * 0.08,
+                    padding: EdgeInsets.symmetric(
+                      vertical: 5.0,
+                      horizontal: 10.0,
+                    ),
+                    // height: MediaQuery.of(context).size.height * 0.08,
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
                         Center(
                           child: Container(
-                            width: 60.0,
-                            height: 50.0,
+                            alignment: Alignment.center,
                             child: IconButton(
                               icon: Icon(
-                                Icons.arrow_back,
-                                size: 30.0,
+                                Icons.close,
+                                size: 27.5,
                                 color: Colors.white,
                               ),
                               onPressed: () {
@@ -82,16 +86,18 @@ class _SearchScreenState extends State<SearchScreen> {
                             ),
                           ),
                         ),
+                        SizedBox(
+                          width: 20.0,
+                        ),
                         Container(
-                          width: 150.0,
-                          height: 50.0,
                           child: Center(
                             child: Text(
-                              "Search",
+                              "Search Wallpapers",
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 28.0,
-                                fontWeight: FontWeight.w400,
+                                fontSize: 22.5,
+                                fontWeight: FontWeight.w600,
+                                letterSpacing: 1.25,
                               ),
                             ),
                           ),
@@ -101,19 +107,21 @@ class _SearchScreenState extends State<SearchScreen> {
                   ),
                   Container(
                     decoration: BoxDecoration(
-                        color: Color(0xfff5f8fd),
-                        borderRadius: BorderRadius.circular(5.0)),
-                    padding: EdgeInsets.symmetric(horizontal: 15.0),
+                      color: Color(0xfff5f8fd),
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                    padding: EdgeInsets.symmetric(horizontal: 10.0),
                     margin:
-                        EdgeInsets.symmetric(horizontal: 25.0, vertical: 10.0),
+                        EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
                     child: Row(
                       children: <Widget>[
                         Expanded(
                           child: TextField(
                             controller: searchController,
                             decoration: InputDecoration(
-                                hintText: "search wallpapers",
-                                border: InputBorder.none),
+                              hintText: "search wallpapers",
+                              border: InputBorder.none,
+                            ),
                           ),
                         ),
                         GestureDetector(
