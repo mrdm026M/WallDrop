@@ -30,18 +30,11 @@ dependencies:
   hexcolor: ^2.0.3
   cached_network_image: ^2.5.1
   image_gallery_saver: ^1.6.1
-  # permission_handler: ^5.0.1+1
   permission_handler: ^4.2.0+hotfix.3
   random_string: ^2.1.0
-  # dio: ^3.0.10
-  # http: ^0.13.1
 
   http: ^0.12.2
   dio: ^3.0.10
-  image_picker_saver: ^0.3.0
-  path_provider: ^2.0.1
-  image_downloader: ^0.30.0
-  # image_picker: ^0.6.7+12
 
 dev_dependencies:
   flutter_test:
@@ -74,7 +67,7 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    # - family: Noto Sans
+    - family: Noto
     - fonts:
         - asset: assets/fonts/NotoSansJP-Bold.otf
         - asset: assets/fonts/NotoSansJP-Medium.otf

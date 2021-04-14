@@ -4,8 +4,10 @@ import 'dart:typed_data';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:walpy/Permissions/Permissions_Service.dart';
+import 'package:walpy/main.dart';
 
 class ImageView extends StatefulWidget {
   final String imgUrl;
@@ -34,37 +36,49 @@ class _ImageViewState extends State<ImageView> {
               ),
             ),
           ),
+          SafeArea(
+            child: Container(
+              alignment: Alignment.topLeft,
+              // color: Colors.white,
+              margin: EdgeInsets.only(left: 5.0),
+              child: IconButton(
+                icon: Icon(
+                  Icons.arrow_back,
+                  color: Colors.white,
+                  size: 40.0,
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => MyApp(),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ),
           Container(
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
             alignment: Alignment.bottomCenter,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                InkWell(
+                GestureDetector(
                   onTap: () {
                     _save();
-                    // _onImageSaveButtonPressed();
-                    // DownloadWallpaper(widget.imgUrl);
                   },
                   child: Stack(
                     children: <Widget>[
                       Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30.0),
-                          color: Color(0xff1c1b1b).withOpacity(0.8),
-                        ),
-                        width: MediaQuery.of(context).size.width / 2,
-                        height: 62.5,
-                      ),
-                      Container(
-                        width: MediaQuery.of(context).size.width / 2,
-                        height: 62.5,
-                        padding: EdgeInsets.symmetric(
-                            horizontal: 10.0, vertical: 10.0),
+                        // color: HexColor("#101118"),
+                        width: 55.0,
+                        height: 55.0,
+                        margin: EdgeInsets.only(bottom: 65.0),
                         decoration: BoxDecoration(
                           border: Border.all(color: Colors.white60, width: 1),
-                          borderRadius: BorderRadius.circular(30.0),
+                          borderRadius: BorderRadius.circular(10.0),
                           gradient: LinearGradient(
                             colors: [
                               Color(0x36FFFFFF),
@@ -72,45 +86,56 @@ class _ImageViewState extends State<ImageView> {
                             ],
                           ),
                         ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Text(
-                              "Download Wallpaper",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 17.5,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            Text(
-                              "Image saved in Gallery",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 12.5,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ],
+                        child: IconButton(
+                          icon: Icon(
+                            Icons.download_sharp,
+                            color: Colors.white,
+                            size: 40.0,
+                          ),
+                          onPressed: () {
+                            _save();
+                          },
                         ),
                       ),
                     ],
                   ),
                 ),
                 SizedBox(
-                  height: 25,
+                  width: 12.5,
                 ),
                 GestureDetector(
                   onTap: () {
                     Navigator.pop(context);
                   },
-                  child: Text(
-                    "Cancel",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.w500,
+                  child: Container(
+                    // color: HexColor("#101118"),
+                    width: 55.0,
+                    height: 55.0,
+                    margin: EdgeInsets.only(bottom: 65.0),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.white60, width: 1),
+                      borderRadius: BorderRadius.circular(10.0),
+                      gradient: LinearGradient(
+                        colors: [
+                          Color(0x36FFFFFF),
+                          Color(0x0FFFFFFF),
+                        ],
+                      ),
+                    ),
+                    child: IconButton(
+                      icon: Icon(
+                        Icons.close,
+                        size: 40.0,
+                        color: Colors.white,
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => MyApp(),
+                          ),
+                        );
+                      },
                     ),
                   ),
                 ),
