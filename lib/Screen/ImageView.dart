@@ -1,4 +1,3 @@
-// import 'dart:io';
 import 'dart:io';
 import 'dart:typed_data';
 
@@ -6,7 +5,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
-// import 'package:permission_handler/permission_handler.dart';
 import 'package:walpy/Permissions/Permissions_Service.dart';
 
 class ImageView extends StatefulWidget {
@@ -43,9 +41,11 @@ class _ImageViewState extends State<ImageView> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
-                GestureDetector(
+                InkWell(
                   onTap: () {
                     _save();
+                    // _onImageSaveButtonPressed();
+                    // DownloadWallpaper(widget.imgUrl);
                   },
                   child: Stack(
                     children: <Widget>[
@@ -133,9 +133,9 @@ class _ImageViewState extends State<ImageView> {
     }
     var response = await Dio()
         .get(widget.imgUrl, options: Options(responseType: ResponseType.bytes));
-    final result =
-        await ImageGallerySaver.saveImage(Uint8List.fromList(response.data));
+    final result = await ImageGallerySaver.saveImage(
+      Uint8List.fromList(response.data),
+    );
     print(result);
-    // Navigator.pop(context);
   }
 }

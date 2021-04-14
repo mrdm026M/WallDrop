@@ -38,6 +38,10 @@ dependencies:
 
   http: ^0.12.2
   dio: ^3.0.10
+  image_picker_saver: ^0.3.0
+  path_provider: ^2.0.1
+  image_downloader: ^0.30.0
+  # image_picker: ^0.6.7+12
 
 dev_dependencies:
   flutter_test:
@@ -69,10 +73,12 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  fonts:
+    # - family: Noto Sans
+    - fonts:
+        - asset: assets/fonts/NotoSansJP-Bold.otf
+        - asset: assets/fonts/NotoSansJP-Medium.otf
+        - asset: assets/fonts/NotoSansJP-Regular.otf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
