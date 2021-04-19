@@ -1,4 +1,4 @@
-package com.example.walpy
+package com.example.walldrop
 
 import io.flutter.embedding.android.FlutterActivity
 
