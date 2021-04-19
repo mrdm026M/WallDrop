@@ -71,7 +71,7 @@ class _SearchScreenState extends State<SearchScreen> {
                             alignment: Alignment.center,
                             child: IconButton(
                               icon: Icon(
-                                Icons.close,
+                                Icons.arrow_back_rounded,
                                 size: 27.5,
                                 color: Colors.white,
                               ),
@@ -90,6 +90,8 @@ class _SearchScreenState extends State<SearchScreen> {
                           width: 20.0,
                         ),
                         Container(
+                          // color: Colors.white,
+                          width: MediaQuery.of(context).size.width * 0.65,
                           child: Center(
                             child: Text(
                               "Search Wallpapers",
@@ -98,7 +100,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                 fontFamily: "Ubuntu",
                                 fontSize: 22.5,
                                 fontWeight: FontWeight.w600,
-                                letterSpacing: 1.25,
+                                // letterSpacing: 1.25,
                               ),
                             ),
                           ),

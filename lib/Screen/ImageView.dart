@@ -96,7 +96,6 @@ class _ImageViewState extends State<ImageView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: HexColor("#101118"),
       body: Stack(
         children: <Widget>[
           Hero(
@@ -114,7 +113,6 @@ class _ImageViewState extends State<ImageView> {
           SafeArea(
             child: Container(
               alignment: Alignment.topLeft,
-              // color: Colors.white,
               margin: EdgeInsets.only(left: 5.0),
               child: IconButton(
                 icon: Icon(
@@ -151,7 +149,7 @@ class _ImageViewState extends State<ImageView> {
                             height: 27.5,
                           ),
                           Text(
-                            "Downloading file",
+                            "Downloading file $progressString",
                             style: TextStyle(
                               color: Colors.white,
                               fontFamily: "Ubuntu",
@@ -166,7 +164,6 @@ class _ImageViewState extends State<ImageView> {
                   ),
                 )
               : Container(
-                  // color: Colors.white,
                   height: MediaQuery.of(context).size.height,
                   width: MediaQuery.of(context).size.width,
                   alignment: Alignment.bottomCenter,
@@ -176,7 +173,6 @@ class _ImageViewState extends State<ImageView> {
                       Stack(
                         children: <Widget>[
                           Container(
-                            // color: HexColor("#101118"),
                             width: 55.0,
                             height: 55.0,
                             margin: EdgeInsets.only(bottom: 65.0),
@@ -208,7 +204,6 @@ class _ImageViewState extends State<ImageView> {
                         width: 12.5,
                       ),
                       Container(
-                        // color: HexColor("#101118"),
                         width: 55.0,
                         height: 55.0,
                         margin: EdgeInsets.only(bottom: 65.0),
@@ -249,31 +244,3 @@ class _ImageViewState extends State<ImageView> {
     );
   }
 }
-
-// _save() async {
-//   Directory directory;
-
-//   if (await directory.exists()) {
-//     var url = widget.mainUrl.toString();
-//     print(url);
-//     List<String> value = url.split("https://www.pexels.com/photo/");
-//     String newName = value[1].toString();
-//     String newFile = newName.substring(0, newName.length - 1);
-//     print(newFile);
-//     File saveFile = File(directory.path + "/$newFile.jpeg");
-//     print(saveFile);
-//     String file = directory.path + "/";
-//     print("url-" + file);
-// await Dio().download(widget.imgUrl, saveFile,
-// options: Options(responseType: ResponseType.bytes));
-// try {
-
-//   // final result = await ImageGallerySaver.saveFile(file);
-//   // print(result);
-// } catch (e) {
-//   print(e);
-// }
-// }
-// }
-
-// }
