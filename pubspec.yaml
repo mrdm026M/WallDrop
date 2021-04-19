@@ -67,12 +67,13 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  # - family: Noto
-  # - fonts:
-  #     - asset: assets/fonts/NotoSansJP-Bold.otf
-  #     - asset: assets/fonts/NotoSansJP-Medium.otf
-  #     - asset: assets/fonts/NotoSansJP-Regular.otf
+  fonts:
+    - family: Ubuntu
+      fonts:
+        - asset: assets/fonts/Ubuntu-Bold.ttf
+        - asset: assets/fonts/Ubuntu-Light.ttf
+        - asset: assets/fonts/Ubuntu-Medium.ttf
+        - asset: assets/fonts/Ubuntu-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

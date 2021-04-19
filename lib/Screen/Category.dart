@@ -63,6 +63,7 @@ class _CategoryState extends State<Category> {
                             widget.categoryName.toUpperCase(),
                             style: TextStyle(
                               color: Colors.white,
+                              fontFamily: "Ubuntu",
                               fontSize: 22.5,
                               fontWeight: FontWeight.w600,
                               letterSpacing: 1.25,

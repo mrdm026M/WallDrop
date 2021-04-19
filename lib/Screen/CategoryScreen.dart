@@ -44,6 +44,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                           "Collections",
                           style: TextStyle(
                             color: Colors.white,
+                            fontFamily: "Ubuntu",
                             fontSize: 22.5,
                             fontWeight: FontWeight.w600,
                             letterSpacing: 1.25,
@@ -142,6 +143,7 @@ class CategoryTile extends StatelessWidget {
                   title,
                   style: TextStyle(
                     color: Colors.white,
+                    fontFamily: "Ubuntu",
                     fontSize: 22.5,
                     fontWeight: FontWeight.w600,
                     letterSpacing: 1.25,

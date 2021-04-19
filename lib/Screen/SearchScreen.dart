@@ -95,6 +95,7 @@ class _SearchScreenState extends State<SearchScreen> {
                               "Search Wallpapers",
                               style: TextStyle(
                                 color: Colors.white,
+                                fontFamily: "Ubuntu",
                                 fontSize: 22.5,
                                 fontWeight: FontWeight.w600,
                                 letterSpacing: 1.25,
