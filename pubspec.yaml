@@ -29,8 +29,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   hexcolor: ^2.0.3
   cached_network_image: ^2.5.1
-  image_gallery_saver: ^1.6.1
-  permission_handler: ^4.2.0+hotfix.3
+  image_gallery_saver: ^1.6.9
+  permission_handler: ^5.0.1+1
+  path_provider: ^2.0.1
   random_string: ^2.1.0
 
   http: ^0.12.2
@@ -66,12 +67,12 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  fonts:
-    - family: Noto
-    - fonts:
-        - asset: assets/fonts/NotoSansJP-Bold.otf
-        - asset: assets/fonts/NotoSansJP-Medium.otf
-        - asset: assets/fonts/NotoSansJP-Regular.otf
+  # fonts:
+  # - family: Noto
+  # - fonts:
+  #     - asset: assets/fonts/NotoSansJP-Bold.otf
+  #     - asset: assets/fonts/NotoSansJP-Medium.otf
+  #     - asset: assets/fonts/NotoSansJP-Regular.otf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

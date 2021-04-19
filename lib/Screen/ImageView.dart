@@ -4,22 +4,24 @@ import 'dart:typed_data';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:hexcolor/hexcolor.dart';
+// import 'package:hexcolor/hexcolor.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
-import 'package:walpy/Permissions/Permissions_Service.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:permission_handler/permission_handler.dart';
+// import 'package:walpy/Permissions/Permissions_Service.dart';
+// import 'package:walpy/Permissions/Permissions_Service.dart';
 import 'package:walpy/main.dart';
 
 class ImageView extends StatefulWidget {
+  final String mainUrl;
   final String imgUrl;
-  ImageView({Key key, this.imgUrl}) : super(key: key);
+  ImageView({Key key, this.imgUrl, this.mainUrl}) : super(key: key);
 
   @override
   _ImageViewState createState() => _ImageViewState();
 }
 
 class _ImageViewState extends State<ImageView> {
-  var filePath;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,12 +29,14 @@ class _ImageViewState extends State<ImageView> {
         children: <Widget>[
           Hero(
             tag: widget.imgUrl,
-            child: Container(
-              height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width,
-              child: CachedNetworkImage(
-                imageUrl: widget.imgUrl,
-                fit: BoxFit.cover,
+            child: SafeArea(
+              child: Container(
+                height: MediaQuery.of(context).size.height,
+                width: MediaQuery.of(context).size.width,
+                child: CachedNetworkImage(
+                  imageUrl: widget.imgUrl,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),
@@ -151,16 +155,71 @@ class _ImageViewState extends State<ImageView> {
   }
 
   _save() async {
+    Directory directory;
     if (Platform.isAndroid) {
-      PermissionsService().requestStoragePermission(onPermissionDenied: () {
-        print("Permission has been denied");
-      });
+      if (await _requestPermission(Permission.storage)) {
+        directory = await getExternalStorageDirectory();
+        print(directory.path);
+        String newPath = "";
+        List<String> folders = directory.path.split("/");
+
+        for (int x = 1; x < folders.length; x++) {
+          String folder = folders[x];
+          if (folder != "Android") {
+            newPath += "/" + folder;
+          } else {
+            break;
+          }
+        }
+
+        newPath = newPath + "/WallDrop";
+
+        directory = Directory(newPath);
+        print(directory.path);
+      } else {
+        return false;
+      }
+    } else {
+      return false;
     }
-    var response = await Dio()
-        .get(widget.imgUrl, options: Options(responseType: ResponseType.bytes));
-    final result = await ImageGallerySaver.saveImage(
-      Uint8List.fromList(response.data),
-    );
-    print(result);
+
+    if (!await directory.exists()) {
+      await directory.create(recursive: true);
+    }
+
+    if (await directory.exists()) {
+      var url = widget.mainUrl.toString();
+      print(url);
+      List<String> value = url.split("https://www.pexels.com/photo/");
+      String newName = value[1].toString();
+      String newFile = newName.substring(0, newName.length - 1);
+      print(newFile);
+      File saveFile = File(directory.path + "/$newFile.jpeg");
+      print(saveFile);
+      String file = directory.path + "/";
+      print("url-" + file);
+      await Dio().download(widget.imgUrl, saveFile,
+          options: Options(responseType: ResponseType.bytes));
+      // try {
+
+      //   // final result = await ImageGallerySaver.saveFile(file);
+      //   // print(result);
+      // } catch (e) {
+      //   print(e);
+      // }
+    }
+  }
+
+  Future<bool> _requestPermission(Permission permission) async {
+    if (await permission.isGranted) {
+      return true;
+    } else {
+      var result = await permission.request();
+      if (result == PermissionStatus.granted) {
+        return true;
+      } else {
+        return false;
+      }
+    }
   }
 }

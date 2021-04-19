@@ -21,7 +21,8 @@ Widget wallpapersList({List<ApiModel> wallpapers, context}) {
               context,
               MaterialPageRoute(
                 builder: (context) => ImageView(
-                  imgUrl: wallpaper.src.portrait,
+                  imgUrl: wallpaper.src.original,
+                  mainUrl: wallpaper.mainUrl,
                 ),
               ),
             );
